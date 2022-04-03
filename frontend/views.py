@@ -19,3 +19,18 @@ def rooms_view(request):
         'title': 'rooms'
     }
     return render(request, 'frontend/rooms.html', context)
+
+
+def about_view(request):
+    context = {
+        'title': 'about'
+    }
+    return render(request, 'frontend/about.html', context)
+
+
+def contact_view(request):
+    context = {
+        'title': 'contact'
+    }
+    return render(request, 'frontend/contact.html', context)
+
