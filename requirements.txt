@@ -1,0 +1,5 @@
+asgiref==3.5.0
+Django
+django-shortcuts==1.6
+sqlparse==0.4.2
+tzdata==2022.1
