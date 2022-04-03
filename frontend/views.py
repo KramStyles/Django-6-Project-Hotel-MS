@@ -12,3 +12,10 @@ def home_view(request):
         'title': 'home'
     }
     return render(request, 'frontend/index.html', context)
+
+
+def home_view_2(request):
+    context = {
+        'title': 'home'
+    }
+    return render(request, 'frontend/index-2.html', context)

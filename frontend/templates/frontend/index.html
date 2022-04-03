@@ -1,9 +1,10 @@
 {% extends 'frontend/layout.html' %}
+{% load static %}
 {% block container %}
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index-2.html">BrightHotel</a>
+            <a class="navbar-brand" href="index-2.html">MIJJ Hotel</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
@@ -22,7 +23,7 @@
 
     <div class="block-31" style="position: relative;">
         <div class="owl-carousel loop-block-31 ">
-            <div class="block-30 item" style="background-image:url(images/xbg_2.jpg.pagespeed.ic.lsh5iyKG53.jpg)" data-stellar-background-ratio="0.5">
+            <div class="block-30 item" style="background-image:url({% static 'frontend/images/xbg_2.jpg.pagespeed.ic.lsh5iyKG53.jpg' %})" data-stellar-background-ratio="0.5">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-10">
@@ -33,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="block-30 item" style="background-image:url(images/xbg_1.jpg.pagespeed.ic.m4Giqda2Z2.jpg)" data-stellar-background-ratio="0.5">
+            <div class="block-30 item" style="background-image:url({% static 'frontend/images/xbg_1.jpg.pagespeed.ic.m4Giqda2Z2.jpg' %})" data-stellar-background-ratio="0.5">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-10">
@@ -44,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="block-30 item" style="background-image:url(images/bg_3.jpg)" data-stellar-background-ratio="0.5">
+            <div class="block-30 item" style="background-image:url({% static 'frontend/images/bg_3.jpg' %})" data-stellar-background-ratio="0.5">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-10">
@@ -194,7 +195,7 @@
                         <div class="item">
                             <div class="block-34">
                                 <div class="image">
-                                    <a href="#"><img src="images/ximg_1.jpg.pagespeed.ic.dwEFLRWJ2X.jpg" alt="Image placeholder"></a>
+                                    <a href="#"><img src="{% static "frontend/images/ximg_1.jpg.pagespeed.ic.dwEFLRWJ2X.jpg" %}" alt="Image placeholder"></a>
                                 </div>
                                 <div class="text">
                                     <h2 class="heading">Bachelor Room</h2>
@@ -212,7 +213,7 @@
                         <div class="item">
                             <div class="block-34">
                                 <div class="image">
-                                    <a href="#"><img src="images/ximg_2.jpg.pagespeed.ic.W9i25ddAly.jpg" alt="Image placeholder"></a>
+                                    <a href="#"><img src="{% static "frontend/images/ximg_2.jpg.pagespeed.ic.W9i25ddAly.jpg" %}" alt="Image placeholder"></a>
                                 </div>
                                 <div class="text">
                                     <h2 class="heading">Family Room</h2>
@@ -230,7 +231,7 @@
                         <div class="item">
                             <div class="block-34">
                                 <div class="image">
-                                    <a href="#"><img src="images/ximg_3.jpg.pagespeed.ic.5M4eZ_biNe.jpg" alt="Image placeholder"></a>
+                                    <a href="#"><img src="{% static "frontend/images/ximg_3.jpg.pagespeed.ic.5M4eZ_biNe.jpg" %}" alt="Image placeholder"></a>
                                 </div>
                                 <div class="text">
                                     <h2 class="heading">Presidential Room</h2>
@@ -248,7 +249,7 @@
                         <div class="item">
                             <div class="block-34">
                                 <div class="image">
-                                    <a href="#"><img src="images/ximg_4.jpg.pagespeed.ic.nvU77vIGAf.jpg" alt="Image placeholder"></a>
+                                    <a href="#"><img src="{% static "frontend/images/ximg_4.jpg.pagespeed.ic.nvU77vIGAf.jpg" %}" alt="Image placeholder"></a>
                                 </div>
                                 <div class="text">
                                     <h2 class="heading">Double Room</h2>
@@ -266,7 +267,7 @@
                         <div class="item">
                             <div class="block-34">
                                 <div class="image">
-                                    <a href="#"><img src="images/img_5.jpg" alt="Image placeholder"></a>
+                                    <a href="#"><img src="{% static "frontend/images/img_5.jpg" %}" alt="Image placeholder"></a>
                                 </div>
                                 <div class="text">
                                     <h2 class="heading">VIP Room</h2>
@@ -284,7 +285,7 @@
                         <div class="item">
                             <div class="block-34">
                                 <div class="image">
-                                    <a href="#"><img src="images/ximg_6.jpg.pagespeed.ic.RFS314UXNJ.jpg" alt="Image placeholder"></a>
+                                    <a href="#"><img src="{% static "frontend/images/ximg_6.jpg.pagespeed.ic.RFS314UXNJ.jpg" %}" alt="Image placeholder"></a>
                                 </div>
                                 <div class="text">
                                     <h2 class="heading">VIP Room</h2>
@@ -332,7 +333,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Asparagus</h2>
@@ -344,7 +345,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Grilled Top Sirloin Steak</h2>
@@ -356,7 +357,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/menu_3.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/menu_3.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Grilled Steak</h2>
@@ -368,7 +369,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Spicy Noodles</h2>
@@ -380,7 +381,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Asparagus</h2>
@@ -392,7 +393,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Grilled Top Sirloin Steak</h2>
@@ -404,7 +405,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/menu_3.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/menu_3.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Grilled Steak</h2>
@@ -416,7 +417,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Spicy Noodles</h2>
@@ -436,7 +437,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Grilled Top Sirloin Steak</h2>
@@ -448,7 +449,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Asparagus</h2>
@@ -460,7 +461,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/menu_3.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/menu_3.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Grilled Steak</h2>
@@ -472,7 +473,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Spicy Noodles</h2>
@@ -484,7 +485,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Asparagus</h2>
@@ -496,7 +497,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Grilled Top Sirloin Steak</h2>
@@ -508,7 +509,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/menu_3.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/menu_3.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Grilled Steak</h2>
@@ -520,7 +521,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Spicy Noodles</h2>
@@ -540,7 +541,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/menu_3.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/menu_3.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Grilled Steak</h2>
@@ -552,7 +553,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Asparagus</h2>
@@ -564,7 +565,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Grilled Top Sirloin Steak</h2>
@@ -576,7 +577,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Spicy Noodles</h2>
@@ -588,7 +589,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_1.jpg.pagespeed.ic.LRTccad3mn.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Asparagus</h2>
@@ -600,7 +601,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_2.jpg.pagespeed.ic.AH9R9dTvD6.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Grilled Top Sirloin Steak</h2>
@@ -612,7 +613,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/menu_3.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/menu_3.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Egg &amp; Grilled Steak</h2>
@@ -624,7 +625,7 @@
                                     <div class="item">
                                         <div class="block-34">
                                             <div class="image">
-                                                <a href="#"><img src="images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" alt="Image placeholder"></a>
+                                                <a href="#"><img src="{% static "frontend/images/xmenu_4.jpg.pagespeed.ic.AU72VNBitZ.jpg" %}" alt="Image placeholder"></a>
                                             </div>
                                             <div class="text">
                                                 <h2 class="heading">Spicy Noodles</h2>
@@ -641,7 +642,7 @@
             </div>
         </div>
     </div>
-    <div class="block-30 block-30-sm item" style="background-image:url(images/xbg_2.jpg.pagespeed.ic.lsh5iyKG53.jpg)" data-stellar-background-ratio="0.5">
+    <div class="block-30 block-30-sm item" style="background-image:url({% static 'frontend/images/xbg_2.jpg.pagespeed.ic.lsh5iyKG53.jpg' %})" data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-12">
@@ -663,7 +664,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="block-33">
                         <div class="vcard d-flex mb-3">
-                            <div class="image align-self-center"><img src="images/xperson_3.jpg.pagespeed.ic.SfZqKN2Qdo.jpg" alt="Person here"></div>
+                            <div class="image align-self-center"><img src="{% static "frontend/images/xperson_3.jpg.pagespeed.ic.SfZqKN2Qdo.jpg" %}" alt="Person here"></div>
                             <div class="name-text align-self-center">
                                 <h2 class="heading">Martin Newmansfield</h2>
                                 <span class="meta">Satisfied Customer</span>
@@ -680,7 +681,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="block-33">
                         <div class="vcard d-flex mb-3">
-                            <div class="image align-self-center"><img src="images/xperson_2.jpg.pagespeed.ic.RNV17L10BD.jpg" alt="Person here"></div>
+                            <div class="image align-self-center"><img src="{% static "frontend/images/xperson_2.jpg.pagespeed.ic.RNV17L10BD.jpg" %}" alt="Person here"></div>
                             <div class="name-text align-self-center">
                                 <h2 class="heading">Nancy Green</h2>
                                 <span class="meta">Satisfied Customer</span>
@@ -697,7 +698,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="block-33">
                         <div class="vcard d-flex mb-3">
-                            <div class="image align-self-center"><img src="images/xperson_1.jpg.pagespeed.ic.wyHPGsvIE0.jpg" alt="Person here"></div>
+                            <div class="image align-self-center"><img src="{% static "frontend/images/xperson_1.jpg.pagespeed.ic.wyHPGsvIE0.jpg" %}" alt="Person here"></div>
                             <div class="name-text align-self-center">
                                 <h2 class="heading">Elizabeth Charles</h2>
                                 <span class="meta">Satisfied Customer</span>
@@ -727,7 +728,7 @@
                     <h3 class="heading-section">Blog</h3>
                     <div class="block-21 d-flex mb-4">
                         <figure class="mr-3">
-                            <img src="images/ximg_1.jpg.pagespeed.ic.dwEFLRWJ2X.jpg" alt="" class="img-fluid">
+                            <img src="{% static "frontend/images/ximg_1.jpg.pagespeed.ic.dwEFLRWJ2X.jpg" %}" alt="" class="img-fluid">
                         </figure>
                         <div class="text">
                             <h3 class="heading"><a href="#">Our Luxury Hotel &amp; Restaurants</a></h3>
@@ -740,7 +741,7 @@
                     </div>
                     <div class="block-21 d-flex mb-4">
                         <figure class="mr-3">
-                            <img src="images/ximg_2.jpg.pagespeed.ic.W9i25ddAly.jpg" alt="" class="img-fluid">
+                            <img src="{% static "frontend/images/ximg_2.jpg.pagespeed.ic.W9i25ddAly.jpg" %}" alt="" class="img-fluid">
                         </figure>
                         <div class="text">
                             <h3 class="heading"><a href="#">Our Luxury Hotel &amp; Restaurants</a></h3>
@@ -753,7 +754,7 @@
                     </div>
                     <div class="block-21 d-flex mb-4">
                         <figure class="mr-3">
-                            <img src="images/ximg_3.jpg.pagespeed.ic.5M4eZ_biNe.jpg" alt="" class="img-fluid">
+                            <img src="{% static "frontend/images/ximg_3.jpg.pagespeed.ic.5M4eZ_biNe.jpg" %}" alt="" class="img-fluid">
                         </figure>
                         <div class="text">
                             <h3 class="heading"><a href="#">Our Luxury Hotel &amp; Restaurants</a></h3>
@@ -780,9 +781,9 @@
             </div>
             <div class="row pt-5">
                 <div class="col-md-12 text-left">
-                    <p>
+                    <p class="text-center">
 
-                        Copyright &copy;<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                        Copyright &copy;
                         <script>document.write(new Date().getFullYear());</script>
                         All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank" class="text-primary">Colorlib</a>
 
@@ -798,4 +799,5 @@
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
         </svg>
     </div>
+
 {% endblock %}
