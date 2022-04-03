@@ -14,8 +14,8 @@ def home_view(request):
     return render(request, 'frontend/index.html', context)
 
 
-def home_view_2(request):
+def rooms_view(request):
     context = {
-        'title': 'home'
+        'title': 'rooms'
     }
-    return render(request, 'frontend/index-2.html', context)
+    return render(request, 'frontend/rooms.html', context)
