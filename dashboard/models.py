@@ -1,16 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
-class User(models.Model):
+class User(AbstractUser):
     username = models.CharField(max_length=64, unique=True)
     email = models.EmailField(max_length=64, unique=True)
     phone_number = models.CharField(max_length=64, unique=True)
     password = models.CharField(max_length=64)
     otp_code = models.CharField(max_length=64, default=None, unique=True, null=True)
     email_verified = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
-    is_superadmin = models.BooleanField(default=False)
+    is_admin = models.BooleanField('Is Admin', default=False)
+    is_superadmin = models.BooleanField('Is Super Admin', default=False)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
