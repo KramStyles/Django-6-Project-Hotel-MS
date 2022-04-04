@@ -15,3 +15,10 @@ def profile_view(request):
         'title': 'Profile Page'
     }
     return render(request, 'dashboard/profile.html', context)
+
+
+def login_view(request):
+    context = {
+        'title': 'Login Page'
+    }
+    return render(request, 'dashboard/login.html', context)
