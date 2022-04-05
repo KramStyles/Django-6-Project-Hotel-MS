@@ -1,13 +1,27 @@
 from django.shortcuts import render
 from django.views import generic
 
-from dashboard.models import RoomType
+from dashboard.models import RoomType, Room
 
 
 class HomeView(generic.ListView):
     model = RoomType
     template_name = 'frontend/index.html'
     context_object_name = 'rooms'
+
+
+class RoomView(generic.TemplateView):
+    template_name = 'frontend/rooms.html'
+
+    def mod_pics(self, data):
+        return (data % 7) + 1
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['title'] = 'rooms'
+        context['object_list'] = Room.objects.filter(room_status_id__status="AVAILABLE")
+        context['mod'] = self.mod_pics
+        return context
 
 
 def home_view(request):
@@ -36,4 +50,3 @@ def contact_view(request):
         'title': 'contact'
     }
     return render(request, 'frontend/contact.html', context)
-
