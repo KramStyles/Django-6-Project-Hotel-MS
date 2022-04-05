@@ -1,0 +1,26 @@
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+
+from .models import User
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control form-control-line', 'placeholder': 'Jonathan Josiah'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control form-control-line', 'placeholder': 'Enter Password'}))
+
+
+class NormalRegisterForm(UserCreationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control form-control-line', 'placeholder': 'Ifeanyi Omaeta'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control form-control-line', 'placeholder': 'admin@hotel.com'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control form-control-line', 'placeholder': 'Enter Password'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control form-control-line', 'placeholder': 'Confirm Password'}))
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
+
+
+class AdminRegisterForm(NormalRegisterForm):
+    class Meta:
+        model = User
+        fields = ('is_admin', 'is_staff', 'is_superadmin')

@@ -1,0 +1,38 @@
+{% extends 'dashboard/layout2.html' %}
+{% block container %}
+    <div class="d-grid align-items-center" style="min-height: 100vh">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="m-auto">
+            <h1 class="text-center">LOGIN</h1>
+             <div class="card">
+                    <!-- Tab panes -->
+                    <div class="card-body">
+                        <form class="form-horizontal form-material mx-2" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="col-md-12">{{ form.username.label|upper }}</label>
+                                <div class="col-md-12">
+                                    {{ form.username }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">{{ form.password.label|upper }}</label>
+                                <div class="col-md-12">
+                                    {{ form.password }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-danger waves-effect waves-light mb-5 text-white w-100" type="submit">Login <i class="fa fa-sign-in"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+{#            <button type="submit" class="btn btn-info btn-rounded waves-effect waves-light mb-5 text-white">Sign In <i class="fa fa-sign-in"></i></button>#}
+        </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
