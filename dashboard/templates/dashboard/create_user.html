@@ -26,57 +26,92 @@
                 <div class="card">
                     <!-- Tab panes -->
                     <div class="card-body">
-                        <form class="form-horizontal form-material mx-2">
-                            <div class="form-group">
-                                <label class="col-md-12">Full Name</label>
-                                <div class="col-md-12">
-                                    <input type="text" placeholder="Johnathan Doe"
-                                           class="form-control form-control-line">
+                        <form class="form-horizontal form-material mx-2" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">First Name</label>
+                                        <div class="col-md-12">
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Last Name</label>
+                                        <div class="col-md-12">
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="example-email" class="col-md-12">Email</label>
-                                <div class="col-md-12">
-                                    <input type="email" placeholder="johnathan@admin.com"
-                                           class="form-control form-control-line" name="example-email"
-                                           id="example-email">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Email Address</label>
+                                        <div class="col-md-12">
+                                            {{ form.email }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Username</label>
+                                        <div class="col-md-12">
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-12">Password</label>
-                                <div class="col-md-12">
-                                    <input type="password" value="password"
-                                           class="form-control form-control-line">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Enter Password</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Johnathan Doe"
+                                                   class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Confirm Password</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Johnathan Doe"
+                                                   class="form-control form-control-line">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="col-md-12">Phone No</label>
-                                <div class="col-md-12">
-                                    <input type="text" placeholder="123 456 7890"
-                                           class="form-control form-control-line">
+                                <label class="col-sm-12">Select Role</label>
+                                <div class="form-check mt-3">
+                                    {{ form.is_staff }}
+                                    <label class="form-check-label me-3" for="{{ form.is_staff.id_for_label }}">Receptionist</label>
+                                    {{ form.is_admin }}
+                                    <label class="form-check-label me-3" for="{{ form.is_admin.id_for_label }}">Manager</label>
+                                    {{ form.is_superadmin }}
+                                    <label class="form-check-label me-3" for="{{ form.is_superadmin.id_for_label }}">Super Admin</label>
                                 </div>
+
                             </div>
                             <div class="form-group">
-                                <label class="col-md-12">Message</label>
-                                <div class="col-md-12">
-                                    <textarea rows="5" class="form-control form-control-line"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-12">Select Country</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control form-control-line">
-                                        <option>London</option>
-                                        <option>India</option>
-                                        <option>Usa</option>
-                                        <option>Canada</option>
-                                        <option>Thailand</option>
-                                    </select>
+                                    {% if msg %}
+                                        {% for fields in form %}
+                                            {% for error in fields.errors %}
+                                                <div class="alert alert-dark"><b>{{ fields.label }} </b> {{ error|escape }}</div>
+                                            {% endfor %}
+
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-success">Update Profile</button>
+                                    <button class="btn btn-danger btn-block" type="submit">Create new User</button>
                                 </div>
                             </div>
                         </form>

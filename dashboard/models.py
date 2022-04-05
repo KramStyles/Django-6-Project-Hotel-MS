@@ -5,9 +5,9 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     username = models.CharField(max_length=64, unique=True)
     email = models.EmailField(max_length=64, unique=True)
-    phone_number = models.CharField(max_length=64)
-    password = models.CharField(max_length=64)
-    otp_code = models.CharField(max_length=64, default=None, unique=True, null=True)
+    phone_number = models.CharField(max_length=64, default=None)
+    password = models.CharField(max_length=200)
+    otp_code = models.CharField(max_length=64, default=None, null=True)
     email_verified = models.BooleanField(default=False)
     is_admin = models.BooleanField('Is Admin', default=False)
     is_superadmin = models.BooleanField('Is Super Admin', default=False)
@@ -100,8 +100,8 @@ class Reservation(models.Model):
     payment_type_id = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
     customer_id = models.ForeignKey(User, on_delete=models.CASCADE)
     staff_id = models.ForeignKey(Receptionist, on_delete=models.CASCADE)
-    start_time = models.TimeField(auto_now=False, auto_now_add=False)
-    end_time = models.TimeField(auto_now=False, auto_now_add=False)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
