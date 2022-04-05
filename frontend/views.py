@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.views import generic
 
+from dashboard.models import RoomType
+
 
 class HomeView(generic.ListView):
-    model = None
+    model = RoomType
     template_name = 'frontend/index.html'
+    context_object_name = 'rooms'
 
 
 def home_view(request):
