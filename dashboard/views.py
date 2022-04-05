@@ -68,7 +68,7 @@ def create_user_view(request):
             msg = 'Registration complete'
             return redirect('dash-profile')
         else:
-            msg = 'Form is not valid'
+            msg = form.errors
     context = {
         'title': 'Create User',
         'form': form,
