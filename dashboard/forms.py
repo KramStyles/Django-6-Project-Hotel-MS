@@ -29,4 +29,4 @@ class AdminRegisterForm(NormalRegisterForm):
 
     class Meta:
         model = User
-        fields = ('is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name')
+        fields = ('is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name','username', 'email', 'password1', 'password2')
