@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 
-from .forms import LoginForm, NormalRegisterForm
+from .forms import LoginForm, NormalRegisterForm, AdminRegisterForm
 
 
 def blank_view(request):
@@ -57,3 +57,21 @@ def register_view(request):
         'msg': msg
     }
     return render(request, 'dashboard/register.html', context)
+
+
+def create_user_view(request):
+    form = AdminRegisterForm(request.POST or None)
+    msg = None
+    if request.method == 'POST':
+        if form.is_valid():
+            user = form.save()
+            msg = 'Registration complete'
+            return redirect('dash-profile')
+        else:
+            msg = 'Form is not valid'
+    context = {
+        'title': 'Create User',
+        'form': form,
+        'msg': msg
+    }
+    return render(request, 'dashboard/create_user.html', context)
