@@ -4,13 +4,18 @@ from django.views import generic
 from dashboard.models import RoomType, Room
 
 
-class HomeView(generic.ListView):
+class HomePage(generic.ListView):
     model = RoomType
     template_name = 'frontend/index.html'
     context_object_name = 'rooms'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['title'] = 'home'
+        return context
 
-class RoomView(generic.TemplateView):
+
+class RoomList(generic.TemplateView):
     template_name = 'frontend/rooms.html'
 
     def mod_pics(self, data):
@@ -19,7 +24,7 @@ class RoomView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['title'] = 'rooms'
-        context['object_list'] = Room.objects.filter(room_status_id__status="AVAILABLE")
+        context['object_list'] = Room.objects.filter(room_status_id__status="AVAILABLE").order_by('-id')
         context['mod'] = self.mod_pics
         return context
 
