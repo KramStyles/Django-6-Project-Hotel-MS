@@ -46,8 +46,8 @@ def rooms_view(request):
         max_price = request.POST['max_price']
         min_price = request.POST['min_price']
         room_type = request.POST['room_type']
-        check_in = request.POST['check_in']
-        check_out = request.POST['check_out']
+        # check_in = request.POST['check_in']
+        # check_out = request.POST['check_out']
 
         if max_price:
             available_rooms = available_rooms.filter(room_type_id__price__lte=max_price)
