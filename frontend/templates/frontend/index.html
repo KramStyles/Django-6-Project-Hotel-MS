@@ -42,52 +42,54 @@
         <div class="row mb-5">
             <div class="col-md-12">
                 <div class="block-32">
-                    <form action="#">
+                    <form action="{% url 'rooms' %}" method="POST">
+                        {% csrf_token %}
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <label for="checkin">Check In</label>
-                                <div class="field-icon-wrap">
-                                    <div class="icon"><span class="icon-calendar"></span></div>
-                                    <input type="text" id="checkin_date" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <label for="checkin">Check Out</label>
-                                <div class="field-icon-wrap">
-                                    <div class="icon"><span class="icon-calendar"></span></div>
-                                    <input type="text" id="checkout_date" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
+                            <div class="col-md-6 mb-3 mb-md-0 col-lg-6">
                                 <div class="row">
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="checkin">Adults</label>
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <label for="checkin">Min Price</label>
                                         <div class="field-icon-wrap">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4+</option>
-                                            </select>
+                                            <input type="text" class="form-control" name="min_price">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="checkin">Children</label>
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <label for="checkin">Max Price</label>
+                                        <div class="field-icon-wrap">
+                                            <input type="text" class="form-control" name="max_price">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <label for="checkin">Type</label>
                                         <div class="field-icon-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4+</option>
+                                            <select name="room_type"  class="form-control">
+                                                <option value="">All</option>
+                                                {% for room in rooms %}
+                                                    <option value="{{ room.room_type }}">{{ room.room_type }}</option>
+                                                {% endfor %}
+
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-3 align-self-end">
-                                <button class="btn btn-primary btn-block">Check Availabilty</button>
+                            <div class="col-md-6 col-lg-2 align-self-end">
+                                <button class="btn btn-primary btn-block" type="submit">Search</button>
+                            </div>
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-2">
+                                <label for="checkin" class="mt-3">Check In</label>
+                                <div class="field-icon-wrap">
+                                    <div class="icon"><span class="icon-calendar"></span></div>
+                                    <input type="text" id="checkin_date" class="form-control" name="check_in">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-2">
+                                <label for="checkin" class="mt-3">Check Out</label>
+                                <div class="field-icon-wrap">
+                                    <div class="icon"><span class="icon-calendar"></span></div>
+                                    <input type="text" id="checkout_date" class="form-control" name="check_out">
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -99,7 +101,7 @@
                 <div class="row mb-5">
                     <div class="col-md-7 section-heading">
                         <span class="subheading-sm">Services</span>
-                        <h2 class="heading">Facilities &amp; Services</h2>
+                        <h2 class="heading">Facilities &amp; Services </h2>
                     </div>
                 </div>
             </div>
@@ -172,114 +174,28 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="nonloop-block-13 owl-carousel">
-                        <div class="item">
+                        {% for room in rooms %}
+                            <div class="item">
                             <div class="block-34">
                                 <div class="image">
-                                    <a href="#"><img src="{% static "frontend/images/ximg_1.jpg.pagespeed.ic.dwEFLRWJ2X.jpg" %}" alt="Image placeholder"></a>
+                                    <a href="#"><img src="{% if forloop.counter < 7 %}
+                                    {% static "frontend/images/ximg_"%}{{ forloop.counter }}.jpg
+                                    {% else %}
+                                    {% static "frontend/images/ximg_7.jpg" %}
+                                    {% endif %} " alt="Image placeholder"></a>
                                 </div>
                                 <div class="text">
-                                    <h2 class="heading">Bachelor Room</h2>
-                                    <div class="price"><sup>$</sup><span class="number">156</span><sub>/per night</sub></div>
+                                    <h2 class="heading">{{ room.room_type|upper }} SUITE</h2>
+                                    <div class="price"><sup>₦</sup><span class="number">{{ room.price }}</span><sub>/per night</sub></div>
                                     <ul class="specs">
-                                        <li><strong>Adults:</strong> 1</li>
-                                        <li><strong>Categories:</strong> Single</li>
+                                        <li><strong>Categories:</strong> {{ room.room_type }}</li>
                                         <li><strong>Facilities:</strong> Closet with hangers, HD flat-screen TV, Telephone</li>
-                                        <li><strong>Size:</strong> 20m<sup>2</sup></li>
-                                        <li><strong>Bed Type:</strong> One bed</li>
+                                        <li><strong>Bed Type:</strong> {{ room.room_type }} bed(s)</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="block-34">
-                                <div class="image">
-                                    <a href="#"><img src="{% static "frontend/images/ximg_2.jpg.pagespeed.ic.W9i25ddAly.jpg" %}" alt="Image placeholder"></a>
-                                </div>
-                                <div class="text">
-                                    <h2 class="heading">Family Room</h2>
-                                    <div class="price"><sup>$</sup><span class="number">320</span><sub>/per night</sub></div>
-                                    <ul class="specs">
-                                        <li><strong>Adults:</strong> 1</li>
-                                        <li><strong>Categories:</strong> Single</li>
-                                        <li><strong>Facilities:</strong> Closet with hangers, HD flat-screen TV, Telephone</li>
-                                        <li><strong>Size:</strong> 20m<sup>2</sup></li>
-                                        <li><strong>Bed Type:</strong> One bed</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-34">
-                                <div class="image">
-                                    <a href="#"><img src="{% static "frontend/images/ximg_3.jpg.pagespeed.ic.5M4eZ_biNe.jpg" %}" alt="Image placeholder"></a>
-                                </div>
-                                <div class="text">
-                                    <h2 class="heading">Presidential Room</h2>
-                                    <div class="price"><sup>$</sup><span class="number">425</span><sub>/per night</sub></div>
-                                    <ul class="specs">
-                                        <li><strong>Adults:</strong> 1</li>
-                                        <li><strong>Categories:</strong> Single</li>
-                                        <li><strong>Facilities:</strong> Closet with hangers, HD flat-screen TV, Telephone</li>
-                                        <li><strong>Size:</strong> 20m<sup>2</sup></li>
-                                        <li><strong>Bed Type:</strong> One bed</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-34">
-                                <div class="image">
-                                    <a href="#"><img src="{% static "frontend/images/ximg_4.jpg.pagespeed.ic.nvU77vIGAf.jpg" %}" alt="Image placeholder"></a>
-                                </div>
-                                <div class="text">
-                                    <h2 class="heading">Double Room</h2>
-                                    <div class="price"><sup>$</sup><span class="number">525</span><sub>/per night</sub></div>
-                                    <ul class="specs">
-                                        <li><strong>Adults:</strong> 1</li>
-                                        <li><strong>Categories:</strong> Single</li>
-                                        <li><strong>Facilities:</strong> Closet with hangers, HD flat-screen TV, Telephone</li>
-                                        <li><strong>Size:</strong> 20m<sup>2</sup></li>
-                                        <li><strong>Bed Type:</strong> One bed</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-34">
-                                <div class="image">
-                                    <a href="#"><img src="{% static "frontend/images/img_5.jpg" %}" alt="Image placeholder"></a>
-                                </div>
-                                <div class="text">
-                                    <h2 class="heading">VIP Room</h2>
-                                    <div class="price"><sup>$</sup><span class="number">600</span><sub>/per night</sub></div>
-                                    <ul class="specs">
-                                        <li><strong>Adults:</strong> 1</li>
-                                        <li><strong>Categories:</strong> Single</li>
-                                        <li><strong>Facilities:</strong> Closet with hangers, HD flat-screen TV, Telephone</li>
-                                        <li><strong>Size:</strong> 20m<sup>2</sup></li>
-                                        <li><strong>Bed Type:</strong> One bed</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-34">
-                                <div class="image">
-                                    <a href="#"><img src="{% static "frontend/images/ximg_6.jpg.pagespeed.ic.RFS314UXNJ.jpg" %}" alt="Image placeholder"></a>
-                                </div>
-                                <div class="text">
-                                    <h2 class="heading">VIP Room</h2>
-                                    <div class="price"><sup>$</sup><span class="number">760</span><sub>/per night</sub></div>
-                                    <ul class="specs">
-                                        <li><strong>Adults:</strong> 1</li>
-                                        <li><strong>Categories:</strong> Single</li>
-                                        <li><strong>Facilities:</strong> Closet with hangers, HD flat-screen TV, Telephone</li>
-                                        <li><strong>Size:</strong> 20m<sup>2</sup></li>
-                                        <li><strong>Bed Type:</strong> One bed</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
