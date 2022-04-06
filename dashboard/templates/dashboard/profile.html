@@ -26,6 +26,16 @@
         <!-- ============================================================== -->
         <!-- Row -->
         <div class="row">
+            <div class="col-sm-12">
+                {% if msg %}
+                    {% for fields in form %}
+                        {% for error in fields.errors %}
+                            <div class="alert alert-dark"><b>{{ fields.label }} </b> {{ error|escape }}</div>
+                        {% endfor %}
+
+                    {% endfor %}
+                {% endif %}
+            </div>
             <!-- Column -->
             <div class="col-lg-4 col-xlg-3 col-md-5">
                 <div class="card">

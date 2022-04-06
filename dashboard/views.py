@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import generic
 
-from .forms import LoginForm, NormalRegisterForm, AdminRegisterForm
+from .forms import LoginForm, NormalRegisterForm, AdminRegisterForm, UserUpdateForm
 from .models import User
 
 
@@ -84,7 +84,11 @@ def profile_view(request):
 
 class ProfileView(LoginRequiredMixin, generic.UpdateView):
     model = User
-    fields = ['is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name', 'email']
     template_name = 'dashboard/update_profile.html'
+    form_class = UserUpdateForm
 
-    success_url = 'dash-profile/'
+    success_url = '/profile'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)

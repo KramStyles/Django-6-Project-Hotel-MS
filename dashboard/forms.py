@@ -35,9 +35,10 @@ class AdminRegisterForm(NormalRegisterForm):
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email')
+        fields = ['is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name', 'email', 'phone_number']
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control form-control-line'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control form-control-line'}),
-            'email': forms.TextInput(attrs={'class': 'form-control form-control-line'})
+            'email': forms.TextInput(attrs={'class': 'form-control form-control-line'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control form-control-line'})
         }
