@@ -1,7 +1,10 @@
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.views import generic
 
 from .forms import LoginForm, NormalRegisterForm, AdminRegisterForm
+from .models import User
 
 
 def blank_view(request):
@@ -9,13 +12,6 @@ def blank_view(request):
         'title': 'Blank Page'
     }
     return render(request, 'dashboard/blank.html', context)
-
-
-def profile_view(request):
-    context = {
-        'title': 'Profile Page'
-    }
-    return render(request, 'dashboard/profile.html', context)
 
 
 def login_view(request):
@@ -75,3 +71,20 @@ def create_user_view(request):
         'msg': msg
     }
     return render(request, 'dashboard/create_user.html', context)
+
+
+def profile_view(request):
+    msg = None
+    context = {
+        'title': 'Profile Page',
+        'msg': msg
+    }
+    return render(request, 'dashboard/profile.html', context)
+
+
+class ProfileView(LoginRequiredMixin, generic.UpdateView):
+    model = User
+    fields = ['is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name', 'email']
+    template_name = 'dashboard/update_profile.html'
+
+    success_url = 'dash-profile/'

@@ -1,0 +1,126 @@
+{% extends 'dashboard/layout.html' %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Profile</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Profile</li>
+                </ol>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <!-- Tab panes -->
+                    <div class="card-body">
+                        <form class="form-horizontal form-material mx-2" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">First Name</label>
+                                        <div class="col-md-12">
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Last Name</label>
+                                        <div class="col-md-12">
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Email Address</label>
+                                        <div class="col-md-12">
+                                            {{ form.email }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Username</label>
+                                        <div class="col-md-12">
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Enter Password</label>
+                                        <div class="col-md-12">
+                                            {{ form.password1 }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Confirm Password</label>
+                                        <div class="col-md-12">
+                                            {{ form.password2 }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12">Select Role</label>
+                                <div class="form-check mt-3">
+                                    {{ form.is_staff }}
+                                    <label class="form-check-label me-3" for="{{ form.is_staff.id_for_label }}">Receptionist</label>
+                                    {{ form.is_admin }}
+                                    <label class="form-check-label me-3" for="{{ form.is_admin.id_for_label }}">Manager</label>
+                                    {{ form.is_superadmin }}
+                                    <label class="form-check-label me-3" for="{{ form.is_superadmin.id_for_label }}">Super Admin</label>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    {% if msg %}
+                                        {% for fields in form %}
+                                            {% for error in fields.errors %}
+                                                <div class="alert alert-dark"><b>{{ fields.label }} </b> {{ error|escape }}</div>
+                                            {% endfor %}
+
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-danger btn-block" type="submit">Create new User</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
