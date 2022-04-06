@@ -1,0 +1,41 @@
+{% extends 'frontend/layout.html' %}
+{% load static %}
+{% block container %}
+    <div class="block-30 block-30-sm item" style="background-image:url({% static 'frontend/images/xbg_2.jpg.pagespeed.ic.lsh5iyKG53.jpg' %})" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-10">
+                    <span class="subheading-sm">Bookings</span>
+                    <h2 class="heading">Room Booked</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row block-9">
+                <div class="col-md-6 pr-md-5 offset-md-3">
+                    <form action="#">
+                        <div class="form-group">
+                            <select name="room_type" class="form-control px-3">
+                                <option value="">Choose Mode of Payment</option>
+                                {#                                    {% for room in rooms %}#}
+                                {#                                        <option value="{{ room.room_type }}">{{ room.room_type }}</option>#}
+                                {#                                    {% endfor %}#}
+                                <option value="">Card</option>
+                                <option value="">Cash</option>
+                                <option value="">Transfer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control px-3 py-3" placeholder="Amount">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Make Payment" class="btn btn-primary py-3 px-5 btn-block">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

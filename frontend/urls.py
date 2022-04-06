@@ -8,4 +8,7 @@ urlpatterns = [
     path('rooms/', views.rooms_view, name='rooms'),
     path('about/', views.about_view, name='about'),
     path('contact/', views.contact_view, name='contact'),
+    path('rooms/<room_id>/booking', views.room_booking, name='booking')
 ]
+
+handler404 = "frontend.views.page_not_found_view"

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 
 from dashboard.models import RoomType, Room
 from .forms import QueryForm
@@ -64,6 +65,16 @@ def rooms_view(request):
     return render(request, 'frontend/rooms.html', context)
 
 
+@login_required
+def room_booking(request, room_id):
+    current_room = get_object_or_404(Room, pk=room_id)
+    context = {
+        'room': current_room,
+        'title': f'book room {room_id}'
+    }
+    return render(request, 'frontend/booking.html', context)
+
+
 def about_view(request):
     context = {
         'title': 'about'
@@ -76,3 +87,8 @@ def contact_view(request):
         'title': 'contact'
     }
     return render(request, 'frontend/contact.html', context)
+
+
+def page_not_found_view(request, exception):
+    response = render(request, 'dashboard/pages-error-404.html', status=404)
+    return response
