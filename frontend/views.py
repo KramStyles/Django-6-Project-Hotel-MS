@@ -17,19 +17,19 @@ class HomePage(generic.ListView):
         return context
 
 
-class RoomList(generic.FormView):
-    template_name = 'frontend/rooms.html'
-    model = Room
-
-    def mod_pics(self, data):
-        return (data % 7) + 1
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['title'] = 'rooms'
-        context['object_list'] = Room.objects.filter(room_status_id__status="AVAILABLE").order_by('-id')
-        context['mod'] = self.mod_pics
-        return context
+# class RoomList(generic.FormView):
+#     template_name = 'frontend/rooms.html'
+#     model = Room
+#
+#     def mod_pics(self, data):
+#         return (data % 7) + 1
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data()
+#         context['title'] = 'rooms'
+#         context['object_list'] = Room.objects.filter(room_status_id__status="AVAILABLE").order_by('-id')
+#         context['mod'] = self.mod_pics
+#         return context
 
 
 def home_view(request):
@@ -58,7 +58,8 @@ def rooms_view(request):
         form = QueryForm()
     context = {
         'title': 'rooms',
-        'object_list': available_rooms
+        'object_list': available_rooms,
+        'rooms': RoomType.objects.all()
     }
     return render(request, 'frontend/rooms.html', context)
 
