@@ -92,3 +92,13 @@ class ProfileView(LoginRequiredMixin, generic.UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class AdminList(LoginRequiredMixin, generic.ListView):
+    model = User
+    template_name = 'dashboard/admin_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['title'] = 'Admin List'
+        return context

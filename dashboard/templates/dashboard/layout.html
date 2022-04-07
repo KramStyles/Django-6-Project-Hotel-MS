@@ -7,7 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
-    <title>Dashboard</title>
+    <title>{% if title %}{{ title }}{% else %}Dashboard{% endif %}</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/adminwrap-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'dashboard/css/assets/images/favicon.png' %}">
@@ -23,6 +23,13 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <style>
+        @media screen and (max-width: 1169px) {
+            .my-hide-logo{
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body class="fix-header card-no-border fix-sidebar">
@@ -48,20 +55,8 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="{% static 'dashboard/css/assets/images/logo-icon.png' %}" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="{% static 'dashboard/css/assets/images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                            <!-- dark Logo text -->
-                            <img src="{% static 'dashboard/css/assets/images/logo-text.png' %}" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
-                            <img src="{% static 'dashboard/css/assets/images/logo-light-text.png' %}" class="light-logo" alt="homepage" /></span>
+                    <a class="navbar-brand text-danger fw-bold my-hide-logo" href="{% url 'dash-profile' %}">
+                        MIJJ HOTELS LTD
                     </a>
                 </div>
                 <!-- ============================================================== -->
@@ -119,11 +114,12 @@
                         <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i
                                     class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i
+
+                        <li> <a class="waves-effect waves-dark" href="{% url 'dash-profile' %}" aria-expanded="false"><i
                                     class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="{% url 'dash-profile' %}" aria-expanded="false"><i
-                                    class="fa fa-table"></i><span class="hide-menu">Profile</span></a>
+                        <li> <a class="waves-effect waves-dark" href="{% url 'admin-list' %}" aria-expanded="false"><i
+                                    class="fa fa-users"></i><span class="hide-menu">Admin List</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="{% url 'dash-create-user' %}" aria-expanded="false"><i
                                     class="fa fa-smile-o"></i><span class="hide-menu">Create User</span></a>
@@ -164,7 +160,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2021 Adminwrap by <a href="https://www.wrappixel.com/">wrappixel.com</a> </footer>
+           <footer class="footer fw-bold text-danger"> © 2022 MIJJ Hotels by Decadevs Pod A Python Stack Squad 10</footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
