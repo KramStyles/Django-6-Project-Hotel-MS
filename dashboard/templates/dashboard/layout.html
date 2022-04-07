@@ -120,13 +120,13 @@
                     </li>
                     {% if user.is_superuser or user.is_superadmin or author.is_superuser or author.is_superadmin%}
                         <li><a class="waves-effect waves-dark" href="{% url 'admin-list' %}" aria-expanded="false"><i
-                                class="fa fa-users"></i><span class="hide-menu">Admin List</span></a>
+                                class="fa fa-user-secret"></i><span class="hide-menu">Admin List</span></a>
                         </li>
                         <li><a class="waves-effect waves-dark" href="{% url 'all-users' %}" aria-expanded="false"><i
-                                class="fa fa-smile-o"></i><span class="hide-menu">All Users</span></a>
+                                class="fa fa-users"></i><span class="hide-menu">All Users</span></a>
                         </li>
                         <li><a class="waves-effect waves-dark" href="{% url 'dash-create-user' %}" aria-expanded="false"><i
-                                class="fa fa-smile-o"></i><span class="hide-menu">Create User</span></a>
+                                class="fa fa-user-plus"></i><span class="hide-menu">Create User</span></a>
                         </li>
                     {% endif %}
                     <li><a class="waves-effect waves-dark" href="{% url 'user-logout' %}" aria-expanded="false"><i
