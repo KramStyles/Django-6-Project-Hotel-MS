@@ -1,0 +1,56 @@
+{% extends 'dashboard/layout.html' %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">{{ title }}</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                    <li class="breadcrumb-item active">{{ title }}</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr class="text-danger">
+                                    <th>#</th>
+                                    <th scope="col">BOOKING ID</th>
+                                    <th scope="col">ROOM NO.</th>
+                                    <th scope="col">CUSTOMER</th>
+                                    <th scope="col">RECEPTIONIST</th>
+                                    <th scope="col">STATUS</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for booking in bookings %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ booking.room_id.room_no }}</td>
+                                        <td>{{ booking.customer_id.username | title }}</td>
+                                        <td>{{ booking.staff_id.first_name }} {{ booking.staff_id.last_name }}</td>
+                                        <td>#{{ booking.payment_id.amount }}</td>
+                                        <td><a href="{% url 'dash-update-user' room.pk %}" class="btn btn-danger">Edit Room</a></td>
+                                        <td><a href="{% url 'delete-admin' room.pk %}" class="btn btn-dark">Delete Delete</a></td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

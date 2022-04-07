@@ -14,5 +14,7 @@ urlpatterns = [
     path('admin/users', views.AllUsersList.as_view(), name='all-users'),
     path('admin/<int:pk>/delete', views.DeleteAdmin.as_view(), name='delete-admin'),
     path('logout/', views.logout_request, name='user-logout'),
+    path('logs/rooms', views.RoomList.as_view(), name='room-lists'),
+    path('logs/bookings', views.BookList.as_view(), name='booking-lists'),
 ]
 

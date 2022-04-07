@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 
 from .forms import LoginForm, NormalRegisterForm, AdminRegisterForm, UserUpdateForm
-from .models import User
+from .models import User, Room, Booking
 
 
 def blank_view(request):
@@ -137,3 +137,15 @@ class DeleteAdmin(LoginRequiredMixin, generic.DeleteView):
         context = super(DeleteAdmin, self).get_context_data()
         context['title'] = 'Delete Manager'
         return context
+
+
+class RoomList(LoginRequiredMixin, generic.ListView):
+    model = Room
+    template_name = 'dashboard/logs/rooms.html'
+    context_object_name = 'rooms'
+
+
+class BookList(LoginRequiredMixin, generic.ListView):
+    model = Booking
+    template_name = 'dashboard/logs/bookings.html'
+    context_object_name = 'bookings'
