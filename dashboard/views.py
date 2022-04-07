@@ -1,4 +1,5 @@
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import generic
@@ -73,6 +74,7 @@ def create_user_view(request):
     return render(request, 'dashboard/create_user.html', context)
 
 
+@login_required
 def profile_view(request):
     msg = None
     context = {
@@ -98,6 +100,12 @@ class ProfileView(LoginRequiredMixin, generic.UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(ProfileView, self).get_context_data()
+        context['title'] = 'Update Profile'
+        context['author'] = self.request.user
+        return context
+
 
 class AdminList(LoginRequiredMixin, generic.ListView):
     model = User
@@ -107,6 +115,16 @@ class AdminList(LoginRequiredMixin, generic.ListView):
         context = super().get_context_data()
         context['admins'] = self.model.objects.exclude(is_superuser=True).exclude(is_staff=False, is_admin=False, is_superadmin=False)
         context['title'] = 'Admin List'
+        return context
+
+
+class AllUsersList(AdminList):
+    template_name = 'dashboard/all_users.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AllUsersList, self).get_context_data()
+        context['users'] = self.model.objects.exclude(is_superuser=True)
+        context['title'] = 'All Users'
         return context
 
 
