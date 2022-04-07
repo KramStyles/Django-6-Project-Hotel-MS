@@ -117,6 +117,12 @@
                     <li><a class="waves-effect waves-dark" href="{% url 'dash-profile' %}" aria-expanded="false"><i
                             class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                     </li>
+                    <li><a class="waves-effect waves-dark" href="{% url 'booking-lists' %}" aria-expanded="false"><i
+                            class="fa fa-folder-open-o"></i><span class="hide-menu">Bookings</span></a>
+                    </li>
+                    <li><a class="waves-effect waves-dark" href="{% url 'book' %}" aria-expanded="false" target="book"><i
+                            class="fa fa-tasks"></i><span class="hide-menu">Book Room</span></a>
+                    </li>
                     {% if user.is_superuser or user.is_superadmin or author.is_superuser or author.is_superadmin %}
                         <li><a class="waves-effect waves-dark" href="{% url 'admin-list' %}" aria-expanded="false"><i
                                 class="fa fa-user-secret"></i><span class="hide-menu">Admin List</span></a>
@@ -130,12 +136,7 @@
                         <li><a class="waves-effect waves-dark" href="{% url 'room-lists' %}" aria-expanded="false"><i
                                 class="fa fa-table"></i><span class="hide-menu">Rooms</span></a>
                         </li>
-                        <li><a class="waves-effect waves-dark" href="{% url 'book' %}" aria-expanded="false" target="book"><i
-                                class="fa fa-tasks"></i><span class="hide-menu">Book Room</span></a>
-                        </li>
-                        <li><a class="waves-effect waves-dark" href="{% url 'booking-lists' %}" aria-expanded="false"><i
-                                class="fa fa-folder-open-o"></i><span class="hide-menu">Bookings</span></a>
-                        </li>
+
                     {% endif %}
                     <li><a class="waves-effect waves-dark" href="{% url 'user-logout' %}" aria-expanded="false"><i
                             class="fa fa-sign-in"></i><span class="hide-menu">Logout</span></a>
