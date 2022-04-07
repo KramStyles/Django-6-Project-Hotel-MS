@@ -103,3 +103,14 @@ class AdminList(LoginRequiredMixin, generic.ListView):
         context['admins'] = self.model.objects.exclude(is_superuser=True).exclude(is_staff=False, is_admin=False, is_superadmin=False)
         context['title'] = 'Admin List'
         return context
+
+
+class DeleteAdmin(LoginRequiredMixin, generic.DeleteView):
+    model = User
+    success_url = '/admin'
+    template_name = 'dashboard/delete_admin.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DeleteAdmin, self).get_context_data()
+        context['title'] = 'Delete Manager'
+        return context

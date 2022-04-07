@@ -42,7 +42,7 @@
                                         <td>{{ object.email }}</td>
                                         <td>{{ object.phone_number }}</td>
                                         <td><a href="{% url 'dash-update-user' object.pk %}" class="btn btn-danger">Edit User</a></td>
-                                        <td><a href="{% url 'dash-update-user' object.pk %}" class="btn btn-dark">Delete User</a></td>
+                                        <td><a href="{% url 'delete-admin' object.pk %}" class="btn btn-dark">Delete User</a></td>
                                     </tr>
                                 {% endfor %}
 
