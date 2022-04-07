@@ -118,9 +118,12 @@
                     <li><a class="waves-effect waves-dark" href="{% url 'dash-profile' %}" aria-expanded="false"><i
                             class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                     </li>
-                    {% if user.is_superuser or user.is_superadmin %}
+                    {% if user.is_superuser or user.is_superadmin or author.is_superuser or author.is_superadmin%}
                         <li><a class="waves-effect waves-dark" href="{% url 'admin-list' %}" aria-expanded="false"><i
                                 class="fa fa-users"></i><span class="hide-menu">Admin List</span></a>
+                        </li>
+                        <li><a class="waves-effect waves-dark" href="{% url 'all-users' %}" aria-expanded="false"><i
+                                class="fa fa-smile-o"></i><span class="hide-menu">All Users</span></a>
                         </li>
                         <li><a class="waves-effect waves-dark" href="{% url 'dash-create-user' %}" aria-expanded="false"><i
                                 class="fa fa-smile-o"></i><span class="hide-menu">Create User</span></a>

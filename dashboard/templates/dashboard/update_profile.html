@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {% if user.is_superuser or user.is_superadmin %}
+                            {% if user.is_superuser or user.is_superadmin or author.is_superuser or author.is_superadmin%}
                                 <div class="form-group">
                                     <label class="col-sm-12">Select Role</label>
                                     <div class="form-check mt-3">
