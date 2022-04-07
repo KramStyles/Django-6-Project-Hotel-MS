@@ -100,5 +100,6 @@ class AdminList(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
+        context['admins'] = self.model.objects.exclude(is_superuser=True).exclude(is_staff=False, is_admin=False, is_superadmin=False)
         context['title'] = 'Admin List'
         return context
