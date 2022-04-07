@@ -13,10 +13,6 @@
                     <li class="breadcrumb-item active">Profile</li>
                 </ol>
             </div>
-            <div class="col-md-7 align-self-center">
-                <a href="{% url 'dash-update-user' user.pk %}"
-                   class="btn waves-effect waves-light btn btn-danger pull-right hidden-sm-down text-white"> Edit Profile</a>
-            </div>
         </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
@@ -26,35 +22,18 @@
         <!-- ============================================================== -->
         <!-- Row -->
         <div class="row">
-            <div class="col-sm-12">
-                {% if msg %}
-                    {% for fields in form %}
-                        {% for error in fields.errors %}
-                            <div class="alert alert-dark"><b>{{ fields.label }} </b> {{ error|escape }}</div>
-                        {% endfor %}
-
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <div class="card">
                     <!-- Tab panes -->
                     <div class="card-body">
-                        <form class="form-horizontal form-material mx-2">
-                            <div class="form-group">
-                                <label class="col-md-12">Username</label>
-                                <div class="col-md-12">
-                                    <input type="text" placeholder="Johnathan Doe"
-                                           class="form-control form-control-line fw-bold" disabled value="{{ user.username|title }}">
-                                </div>
-                            </div>
+                        <form class="form-horizontal form-material mx-2" method="post">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="col-md-12">First Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                           class="form-control form-control-line fw-bold" disabled value="{{ user.first_name|title }}">
+                                            {{ form.first_name }}
                                         </div>
                                     </div>
                                 </div>
@@ -62,8 +41,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Last Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                           class="form-control form-control-line fw-bold" disabled value="{{ user.last_name|title }}">
+                                            {{ form.last_name }}
                                         </div>
                                     </div>
                                 </div>
@@ -73,8 +51,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Email Address</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                           class="form-control form-control-line fw-bold" disabled value="{{ user.email|title }}">
+                                            {{ form.email }}
                                         </div>
                                     </div>
                                 </div>
@@ -82,23 +59,41 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Phone Number</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                           class="form-control form-control-line fw-bold" disabled value="{{ user.phone_number|title }}">
+                                            {{ form.phone_number }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-12">Select Role</label>
-                                <div class="form-check mt-3">
-                                    <input type="checkbox" {% if user.is_staff %}checked{% endif %}>
-                                    <label class="form-check-label me-3" for="{{ form.is_staff.id_for_label }}">Receptionist</label>
-                                    <input type="checkbox" {% if user.is_admin %}checked{% endif %}>
-                                    <label class="form-check-label me-3" for="{{ form.is_admin.id_for_label }}">Manager</label>
-                                    <input type="checkbox" {% if user.is_superadmin %}checked{% endif %}>
-                                    <label class="form-check-label me-3" for="{{ form.is_superadmin.id_for_label }}">Super Admin</label>
-                                </div>
+                            {% if user.is_superuser or user.is_superadmin %}
+                                <div class="form-group">
+                                    <label class="col-sm-12">Select Role</label>
+                                    <div class="form-check mt-3">
+                                        {{ form.is_staff }}
+                                        <label class="form-check-label me-3" for="{{ form.is_staff.id_for_label }}">Receptionist</label>
+                                        {{ form.is_admin }}
+                                        <label class="form-check-label me-3" for="{{ form.is_admin.id_for_label }}">Manager</label>
+                                        {{ form.is_superadmin }}
+                                        <label class="form-check-label me-3" for="{{ form.is_superadmin.id_for_label }}">Super Admin</label>
+                                    </div>
 
+                                </div>
+                            {% endif %}
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    {% if msg %}
+                                        {% for fields in form %}
+                                            {% for error in fields.errors %}
+                                                <div class="alert alert-dark"><b>{{ fields.label }} </b> {{ error|escape }}</div>
+                                            {% endfor %}
+
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-danger btn-block" type="submit">Update Profile</button>
+                                </div>
                             </div>
                         </form>
                     </div>

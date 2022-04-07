@@ -72,7 +72,7 @@
                                         <li><strong>Bed Type:</strong> {{ object.room_type_id.room_type }} bed</li>
                                         <li><strong>Status: </strong>{{ object.room_status_id.status }}</li>
                                     </ul>
-                                    <p><a href="#" class="btn btn-primary py-3 px-5">Read More</a></p>
+                                    <p><a href="{% url 'booking' object.pk %}" class="btn btn-primary py-3 px-5">Book Room</a></p>
                                 </div>
                             </div>
                         </div>
@@ -126,6 +126,7 @@
                                         <li><strong>Status:</strong> {{ object.room_status_id.status }}</li>
                                         <li><strong>Bed Type:</strong> {{ object.room_type_id.room_type }} bed</li>
                                     </ul>
+                                    <p><a href="{% url 'booking' object.pk %}" class="btn btn-primary py-2 px-5 mt-3">Book Room</a></p>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from .models import User
 
@@ -29,4 +29,16 @@ class AdminRegisterForm(NormalRegisterForm):
 
     class Meta:
         model = User
-        fields = ('is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name','username', 'email', 'password1', 'password2')
+        fields = ('is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['is_admin', 'is_staff', 'is_superadmin', 'first_name', 'last_name', 'email', 'phone_number']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control form-control-line'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control form-control-line'}),
+            'email': forms.TextInput(attrs={'class': 'form-control form-control-line'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control form-control-line'})
+        }
