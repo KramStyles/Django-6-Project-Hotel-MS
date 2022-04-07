@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import generic
@@ -80,6 +80,11 @@ def profile_view(request):
         'msg': msg
     }
     return render(request, 'dashboard/profile.html', context)
+
+
+def logout_request(request):
+    logout(request)
+    return redirect('dash-login')
 
 
 class ProfileView(LoginRequiredMixin, generic.UpdateView):

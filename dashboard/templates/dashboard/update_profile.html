@@ -64,18 +64,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-12">Select Role</label>
-                                <div class="form-check mt-3">
-                                    {{ form.is_staff }}
-                                    <label class="form-check-label me-3" for="{{ form.is_staff.id_for_label }}">Receptionist</label>
-                                    {{ form.is_admin }}
-                                    <label class="form-check-label me-3" for="{{ form.is_admin.id_for_label }}">Manager</label>
-                                    {{ form.is_superadmin }}
-                                    <label class="form-check-label me-3" for="{{ form.is_superadmin.id_for_label }}">Super Admin</label>
-                                </div>
+                            {% if user.is_superuser or user.is_superadmin %}
+                                <div class="form-group">
+                                    <label class="col-sm-12">Select Role</label>
+                                    <div class="form-check mt-3">
+                                        {{ form.is_staff }}
+                                        <label class="form-check-label me-3" for="{{ form.is_staff.id_for_label }}">Receptionist</label>
+                                        {{ form.is_admin }}
+                                        <label class="form-check-label me-3" for="{{ form.is_admin.id_for_label }}">Manager</label>
+                                        {{ form.is_superadmin }}
+                                        <label class="form-check-label me-3" for="{{ form.is_superadmin.id_for_label }}">Super Admin</label>
+                                    </div>
 
-                            </div>
+                                </div>
+                            {% endif %}
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     {% if msg %}

@@ -11,7 +11,7 @@ urlpatterns = [
     path('admin/create/', views.create_user_view, name='dash-create-user'),
     path('admin/<int:pk>/edit', views.ProfileView.as_view(), name='dash-update-user'),
     path('admin/', views.AdminList.as_view(), name='admin-list'),
-    path('admin/<int:pk>/delete', views.DeleteAdmin.as_view(), name='delete-admin')
-
+    path('admin/<int:pk>/delete', views.DeleteAdmin.as_view(), name='delete-admin'),
+    path('logout/', views.logout_request, name='user-logout')
 ]
 
