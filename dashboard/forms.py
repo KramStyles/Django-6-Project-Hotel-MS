@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import User, RoomType
+from .models import User, RoomType, Receptionist, Payment
 
 
 class LoginForm(forms.Form):
@@ -69,9 +69,16 @@ class BookingForm(forms.Form):
         ROOM_TYPES.append((option.room_type, option.room_type))
     ROOM_TYPES = tuple(ROOM_TYPES)
 
+    customers = tuple((user.id, user.username) for user in User.objects.all())
+    staffs = tuple((staff.id, staff.user_id.username) for staff in Receptionist.objects.all())
+    payments = tuple((payment.id, payment.amount) for payment in Payment.objects.all())
+
     room_type = forms.ChoiceField(widget=widget_select, choices=ROOM_TYPES, required=True)
-    customer_id = forms.IntegerField(widget=widget, required=True)
-    staff_id = forms.IntegerField(widget=widget, required=True)
-    payment_id = forms.IntegerField(widget=widget, required=True)
+    # customer_id = forms.IntegerField(widget=widget, required=True)
+    # staff_id = forms.IntegerField(widget=widget, required=True)
+    # payment_id = forms.IntegerField(widget=widget, required=True)
+    staff_id = forms.ChoiceField(widget=widget_select, choices=staffs, required=True)
+    payment_id = forms.ChoiceField(widget=widget_select, choices=payments, required=True)
+    customer_id = forms.ChoiceField(widget=widget_select, choices=customers,required=True)
     start_date = forms.DateTimeField(widget=widget2, required=True)
     end_date = forms.DateTimeField(widget=widget2, required=True)

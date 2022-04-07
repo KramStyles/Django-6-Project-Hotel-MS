@@ -1,0 +1,113 @@
+{% extends 'dashboard/layout.html' %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">{{ title }}</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                    <li class="breadcrumb-item active">{{ title }}</li>
+                </ol>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <!-- Tab panes -->
+                    <div class="card-body">
+                        <form class="form-horizontal form-material mx-2" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Room Type</label>
+                                        <div class="col-md-12">
+                                            {{ form.room_type }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Customer ID</label>
+                                        <div class="col-md-12">
+                                            {{ form.customer_id }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Staff</label>
+                                        <div class="col-md-12">
+                                            {{ form.staff_id }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Payment</label>
+                                        <div class="col-md-12">
+                                            {{ form.payment_id }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Start Date</label>
+                                        <div class="col-md-12">
+                                            {{ form.start_date }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12">End Date</label>
+                                        <div class="col-md-12">
+                                            {{ form.end_date }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    {% if msg %}
+                                        {% for fields in form %}
+                                            {% for error in fields.errors %}
+                                                <div class="alert alert-dark"><b>{{ fields.label }} </b> {{ error|escape }}</div>
+                                            {% endfor %}
+
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-danger btn-block" type="submit">Book Room</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
