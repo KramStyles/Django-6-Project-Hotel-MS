@@ -1,0 +1,12 @@
+{% extends 'dashboard/layout2.html' %}
+{% block container %}
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">{{ review.fullname }}</h2>
+                <p class="card-text">{{ review.review_text }}.</p>
+                <a href="#" class="card-link">Ratings: {{ review.ratings }} stars</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

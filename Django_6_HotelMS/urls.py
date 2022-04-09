@@ -20,4 +20,5 @@ urlpatterns = [
     path('myadmin/', admin.site.urls),
     path('', include('frontend.urls')),
     path('', include('dashboard.urls')),
+    path('view/', include('reviews.urls')),
 ]

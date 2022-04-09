@@ -1,0 +1,28 @@
+{% extends 'dashboard/layout2.html' %}
+{% block container %}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Fullname</th>
+                    <th>Reviews</th>
+                    <th>Ratings</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for review in reviews %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ review.fullname }}</td>
+                        <td>{{ review.review_text|truncatewords:10 }} <a href="{% url 'review-single' review.pk %}" class="pull-right">Read more</a></td>
+                        <td>{{ review.ratings }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
