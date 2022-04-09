@@ -16,7 +16,7 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ review.fullname }}</td>
-                        <td>{{ review.review_text }}</td>
+                        <td>{{ review.review_text|truncatewords:10 }} <a href="{% url 'review-single' review.pk %}" class="pull-right">Read more</a></td>
                         <td>{{ review.ratings }}</td>
                     </tr>
                 {% endfor %}
