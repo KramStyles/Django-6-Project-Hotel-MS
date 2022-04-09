@@ -1,4 +1,28 @@
 {% extends 'dashboard/layout2.html' %}
 {% block container %}
-    <h1>THANK YOU</h1>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Fullname</th>
+                    <th>Reviews</th>
+                    <th>Ratings</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for review in reviews %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ review.fullname }}</td>
+                        <td>{{ review.review_text }}</td>
+                        <td>{{ review.ratings }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
