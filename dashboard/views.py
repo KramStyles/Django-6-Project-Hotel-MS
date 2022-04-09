@@ -1,16 +1,17 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import generic
 
-from .forms import LoginForm, NormalRegisterForm, AdminRegisterForm, UserUpdateForm
-from .models import User, Room, Booking
+from .forms import LoginForm, NormalRegisterForm, AdminRegisterForm, UserUpdateForm, BookingForm
+from .models import User, Room, Booking, Reservation, Receptionist, Payment
 
 
 def blank_view(request):
     context = {
-        'title': 'Blank Page'
+        'title': 'Dashboard'
     }
     return render(request, 'dashboard/blank.html', context)
 
@@ -149,3 +150,33 @@ class BookList(LoginRequiredMixin, generic.ListView):
     model = Booking
     template_name = 'dashboard/logs/bookings.html'
     context_object_name = 'bookings'
+
+
+class BookingView(LoginRequiredMixin, generic.FormView):
+    form_class = BookingForm
+    template_name = 'dashboard/booking.html'
+
+    def validation(self, room, start_date, end_date):
+        check = []
+        booking_list = Reservation.objects.filter(room_id=room)
+        for booking in booking_list:
+            if booking.start_time > end_date or booking.end_time < start_date:
+                check.append(True)
+            else:
+                check.append(False)
+        return all(check)
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        room_list = Room.objects.filter(room_type_id__room_type=data['room_type'])
+        if available_rooms := [room for room in room_list if self.validation(room, data['start_date'], data['end_date'])]:
+            booking = Booking.objects.create(
+                room_id=available_rooms[0],
+                customer_id=User.objects.get(pk=data['customer_id']),
+                staff_id=Receptionist.objects.get(pk=data['staff_id']),
+                payment_id=Payment.objects.get(pk=data['payment_id']),
+            )
+            booking.save()
+            return redirect('booking-lists')
+        else:
+            return HttpResponse("All the rooms are booked for the room type!")
